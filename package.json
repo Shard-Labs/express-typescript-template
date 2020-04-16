@@ -8,11 +8,13 @@
       "check": "./node_modules/.bin/dependency-check  package.json --missing",
       "prebuild": "tslint -c tslint.json -p tsconfig.json --fix",
       "build": "npm run clean && tsc",
-      "prestart": "npm run build && npm run check",
       "start": "node .",
       "dev": "nodemon",
+      "premigrate": "npm run build && npm run check",
       "migrate": "npm run build && ./node_modules/.bin/ts-node ./node_modules/.bin/typeorm migration:run",
       "migrate:undo": "npm run build && ./node_modules/.bin/ts-node ./node_modules/.bin/typeorm migration:revert",
+      "seed:config": "ts-node ./node_modules/typeorm-seeding/dist/cli.js config",
+      "seed:run": "ts-node ./node_modules/typeorm-seeding/dist/cli.js seed",
       "test": "echo \"Error: no test specified\" && exit 1"
    },
    "repository": {
@@ -36,6 +38,7 @@
       "reflect-metadata": "^0.1.10",
       "rimraf": "^3.0.2",
       "typeorm": "0.2.24",
+      "typeorm-seeding": "^1.5.0",
       "winston": "^3.2.1"
    },
    "devDependencies": {

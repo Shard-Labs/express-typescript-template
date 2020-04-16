@@ -12,7 +12,6 @@ dotenv.config();
 
 import "reflect-metadata";
 import { createConnection } from "typeorm";
-import { UserSeed } from "./database/seeds/userSeed";
 
 const appInstance: App = new App({
     port: parseInt(process.env.SERVER_PORT, 10)
@@ -24,8 +23,6 @@ appInstance.app.use(errorMiddleware);
 appInstance.app.use('/', homeRouter);
 
 createConnection().then(async connection => {
-    // tslint:disable-next-line:no-unused-expression
-    new UserSeed();
     appInstance.app.use('/api/users', userRouter);
     // tslint:disable-next-line:no-console
 }).catch(error => console.log(error));

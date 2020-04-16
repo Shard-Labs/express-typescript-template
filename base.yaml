@@ -10,7 +10,7 @@ services:
       - db
     ports:
       - "${SERVER_PORT}:${SERVER_PORT}"
-    command: bash -c "npm run migrate && npm run start"
+    command: bash -c "npm run migrate && npm run seed:run && npm run start"
     networks: 
       - project
     restart: always

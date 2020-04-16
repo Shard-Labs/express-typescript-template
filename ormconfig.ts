@@ -15,6 +15,12 @@ module.exports = {
    migrations: [
       process.env.MIGRATIONS
    ],
+   seeds: [
+      process.env.SEEDS
+   ],
+   factories:[
+      process.env.FACTORIES
+   ],
    subscribers: [
       process.env.SUBSCRIBERS
    ],
